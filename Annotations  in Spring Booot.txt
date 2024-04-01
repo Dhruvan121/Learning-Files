@@ -1,0 +1,107 @@
+Annotations :
+1. @RestController: An annotation indicating that this class is a Spring MVC controller that handles HTTP requests and generates responses.
+
+2. @GetMapping : whenever someone accesses the root path of your application (http://localhost:8080/), the sayHello method will be executed, and the "Hello, World!" message will be returned as the response.
+@GetMapping("/") or similar annotations, you are specifying that the annotated method(specified) should be executed when a client sends an HTTP GET request to the specified URL. 
+
+
+3.@Value() Annotations : to insert properties value into spring boot application we use @Value annotation. 
+
+4.@Component - marks the class as a spring bean and makes the bean available for dependency injection.
+>Spring bean is a regular java class that is managed by spring.
+
+5.@Autowired  -tells the spring to inject dependency. Its completely for Dependency Injection.
+Note: if you have only 1 constructor then autowired on constructor is optional.
+
+6.@Override is used in Java to indicate that a method in a subclass is intended to override a method in its superclass.
+
+7.@springbootconfiguration enables- 
+
+>@enableautoconfiguration - enable spring boot auto - conf.
+>@configuration  - also register with extra beans with @Bean or import other configuration.
+
+>@SpringBootApplication -  creates application context and register all beans and also Starts the embeded server.
+
+>@componentscan configuration  - enable component scanning for current package and also recursively scans for sub-packages.
+*we need to explicitly list base packages to scan like below :-
+
+@SpringBootApplication(scanBasePackages = {"com.example.springcoredemo", "myPack"})   
+
+
+8. @Qualifier  - to inject the particular bean (by specifying the bean id ie it is the same as class name but first character is small and remain same as class )
+>For Constructor Injection 
+Syntax :  @Qualifier("cricket coach")
+
+ex: public DemoController(@Qualifier("cricket coach") Coach theCoach)
+myCoach = theCoach;
+
+>For Setter Injection 
+same as constructor injection 
+>High Priority
+
+9. @Primary - So this annotation basically says, out of the multiple coach implementations, this is going to be the primary bean implementation that you should use.
+> specify which is primary for a particular class 
+
+
+10. @Lazy - beans are lazy and no beans are created if you specify the class as lazy  
+>spring.main.lazy-initialization = true  specify all the class as lazy 
+
+
+11.@Scope Annations : 
+@Scope(ConfigurableBeanFactory.SCOPE_SINGLETON)  - if we specify the class as singleton then spring will create only 1 instances of the bean. 
+@Scope(ConfigurableBeanFactory.SCOPE_PROTOTYPE)  - if we specify the class as prototype then spring will create new bean instances for each container request.
+
+12. @PostConstruct  -your custom init method
+    @PreDestroy     -custom method destroyed
+
+
+13.@Configuration - makes the class as configuration 
+   @Bean          - Define the @Bean Method to configure the bean(here bean id defaults to the method name)
+
+
+
+14.@Entity   - it will map this java class to a database table
+   @Table    - map table 
+   @coulmns  - map columns 
+   @GeneratedValue(strategy = GenerationType.IDENTITY)   - for auto-increment
+
+15. @Transactional - begin and end your jpa code
+
+16. @Repository - 
+>specilized annotations for repositories 
+>sub annotation of component.
+>spring will automatically register the DAO implementations
+>it is used for annotating DAO's 
+>that translates JDBC checked exceptions to unchecked
+
+17. @Bean - If you need custom configuration or want to create beans with specific logic, use @Bean. 
+
+18. @Component - If you want a simpler, declarative approach to define Spring-managed beans, use @Component.
+
+
+19) Application Properties : 
+a)spring.jpa.hibernate.ddl-auto = update / create 
+
+b)Add logging config to display SQL statements
+logging.level.org.hibernate.SQL = debug
+logging.level.org.hibernate.orm.jdbc.bind = trace
+
+
+@GetMapping is only for HTTP GET request 
+
+@RequestMapping can be used to process any HTTP methods like POST, PUT, GET and even DELETE.This is one of the basic annotations in Spring that maps HTTP requests with methods. This is used to map the request into the specific method in Spring.
+
+@ExceptionHandler - will return a ResponseEntity for a particular exception method in json format and ResponseEntity is a wrapper for the HTTP response object
+>HTTP  status code , HTTP  headers and response body
+
+@PathVariable in Java is used to capture values from the URL and pass them as method parameters in Spring web applications.
+
+@ControllerAdvice annotation, which tells Spring that this class is meant to handle exceptions globally for all controllers in your application.
+	
+
+
+
+
+
+
+
